@@ -3,7 +3,7 @@
 #include "buzzer.h"
 
 #define PIN_BUTTON_MEL_ONE 3
-#define PIN_BUTTON_OFF 7
+#define PIN_BUTTON_OFF 5
 #define PIN_BUZZER 6
 
 Button buttonMelodyOne(PIN_BUTTON_MEL_ONE);
@@ -21,14 +21,11 @@ int melodyLength = 4;
 Button buttonMelodyTwo(PIN_BUTTON_MEL_TWO);
 Button buttonMelodyThree(PIN_BUTTON_MEL_THREE);
 
-//and the second melody
-int notes2[] = {NOTE_C4, NOTE_SILENCE, NOTE_G4, NOTE_SILENCE};
-double durations2[] = {4, 1, 4, 1};
-int melodyLength2 = 4;
-
-int notesThree[] = {NOTE_CS2, NOTE_B1, NOTE_D1, NOTE_G4, NOTE_FS2, NOTE_B0, NOTE_D5};
-double durationsThree[] = {5, 2, 5, 2, 7, 4, 7};
-int melodyLengthThree = 7;
+//melody 2
+int notesSecond[2][4] = {{NOTE_C4, NOTE_SILENCE, NOTE_G4, NOTE_SILENCE}, {NOTE_E4, NOTE_A5, NOTE_C4, NOTE_CS8}};
+double durationsSecond[2][4] = {{4, 1, 4, 1}, {5, 8, 5, 3}};
+int melodyLengthSecond = 4;
+int secondNoteIndex = 0;
 
 void setup()
 {
@@ -52,13 +49,8 @@ void loop()
 
     if (buttonMelodyTwo.wasPressed()) 
     {
-        buzzer.setMelody(notes2, durations2, melodyLength2);
-        buzzer.turnSoundOn();
-    }
-
-    if (buttonMelodyThree.wasPressed())
-    {
-        buzzer.setMelody(notesThree, durationsThree, melodyLengthThree);
+        buzzer.setMelody(notesSecond[secondNoteIndex], durationsSecond[secondNoteIndex], melodyLengthSecond);
+        secondNoteIndex = (secondNoteIndex + 1) % 2;
         buzzer.turnSoundOn();
     }
 }
