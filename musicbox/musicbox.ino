@@ -3,7 +3,7 @@
 #include "buzzer.h"
 
 #define PIN_BUTTON_MEL_ONE 3
-#define PIN_BUTTON_OFF 5
+#define PIN_BUTTON_OFF 7
 #define PIN_BUZZER 6
 
 Button buttonMelodyOne(PIN_BUTTON_MEL_ONE);
@@ -26,8 +26,9 @@ int notes2[] = {NOTE_C4, NOTE_SILENCE, NOTE_G4, NOTE_SILENCE};
 double durations2[] = {4, 1, 4, 1};
 int melodyLength2 = 4;
 
-int notesThree[] = {NOTE_B2, NOTE_SILENCE, NOTE_D1, NOTE_SILENCE};
-double durationsThree[] = {8, 1, 4, 1};
+int notesThree[] = {NOTE_CS2, NOTE_B1, NOTE_D1, NOTE_G4, NOTE_FS2, NOTE_B0, NOTE_D5};
+double durationsThree[] = {5, 2, 5, 2, 7, 4, 7};
+int melodyLengthThree = 7;
 
 void setup()
 {
@@ -57,7 +58,7 @@ void loop()
 
     if (buttonMelodyThree.wasPressed())
     {
-        buzzer.setMelody(notesThree, durationsThree, melodyLength);
+        buzzer.setMelody(notesThree, durationsThree, melodyLengthThree);
         buzzer.turnSoundOn();
     }
 }
