@@ -50,7 +50,7 @@ void loop()
     if (buttonMelodyTwo.wasPressed()) 
     {
         buzzer.setMelody(notesSecond[secondNoteIndex], durationsSecond[secondNoteIndex], melodyLengthSecond);
-        secondNoteIndex = (secondNoteIndex + 1) % 2; 
+        secondNoteIndex = (secondNoteIndex + 1) % 2;
         buzzer.turnSoundOn();
     }
 }
