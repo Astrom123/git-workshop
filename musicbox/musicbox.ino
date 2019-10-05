@@ -16,12 +16,18 @@ int melodyLength = 4;
 
 // maybe somewhere in the future we will have one more button...
 #define PIN_BUTTON_MEL_TWO 4
+#define PIN_BUTTON_MEL_THREE 5
+
 Button buttonMelodyTwo(PIN_BUTTON_MEL_TWO);
+Button buttonMelodyThree(PIN_BUTTON_MEL_THREE);
 
 //and the second melody
 int notes2[] = {NOTE_C4, NOTE_SILENCE, NOTE_G4, NOTE_SILENCE};
 double durations2[] = {4, 1, 4, 1};
 int melodyLength2 = 4;
+
+int notesThree[] = {NOTE_B2, NOTE_SILENCE, NOTE_D1, NOTE_SILENCE};
+double durationsThree[] = {8, 1, 4, 1};
 
 void setup()
 {
@@ -46,6 +52,12 @@ void loop()
     if (buttonMelodyTwo.wasPressed()) 
     {
         buzzer.setMelody(notes2, durations2, melodyLength2);
+        buzzer.turnSoundOn();
+    }
+
+    if (buttonMelodyThree.wasPressed())
+    {
+        buzzer.setMelody(notesThree, durationsThree, melodyLength);
         buzzer.turnSoundOn();
     }
 }
