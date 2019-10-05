@@ -45,7 +45,7 @@ void loop()
 
     if (buttonMelodyTwo.wasPressed()) 
     {
-        buzzer.setMelody(notes, durations, melodyLength);
+        buzzer.setMelody(notes2, durations2, melodyLength2);
         buzzer.turnSoundOn();
     }
 }
